@@ -1,3 +1,4 @@
+from from_json import read_json
 def get_users_from_country(data:dict, country:str)->list:
     """Gets all users from a country from the data
     Args:
@@ -6,4 +7,10 @@ def get_users_from_country(data:dict, country:str)->list:
     Returns:
         list: A list of users
     """
-    pass
+    users=data['users']
+    l=[]
+    for i in users:
+        if i['country']==country:
+            l+=[i['name']['first']]
+    return l
+print(get_users_from_country(read_json('users.json'),'Norway'))

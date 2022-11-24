@@ -1,3 +1,4 @@
+from from_json import read_json
 def get_male_users_from_country(data:dict, country:str)->list:
     """
     Get male users from a country from the data
@@ -8,6 +9,11 @@ def get_male_users_from_country(data:dict, country:str)->list:
 
         list: A list of users
     """ 
-    pass
-
-    
+    users=data['users']
+    l=[]
+    i=0
+    for i in users:
+        if i['country']==country and i['gender']=='male':
+            l+=[i['name']['first']]
+    return l
+print(get_male_users_from_country((read_json('users.json')),'Norway'))   

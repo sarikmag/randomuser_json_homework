@@ -1,4 +1,5 @@
-def get_users_younger_than(data:dict, age:int)->list:
+from from_json import read_json
+def get_users_yonger_than(data:dict, age:int)->list:
     """Gets all users younger than a certain age from the data
     Args:
         data (dict): The data from the JSON file
@@ -6,4 +7,10 @@ def get_users_younger_than(data:dict, age:int)->list:
     Returns:
         list: A list of users
     """
-    pass
+    users=data['users']
+    l=[]
+    for i in users:
+        if i['age']<age:
+            l+=[i['name']['first']]
+    return l
+print(get_users_yonger_than(read_json('users.json'),30))
